@@ -20,9 +20,8 @@ namespace HypseusFE
         }
 
         private void FrOptions_Load(object sender, EventArgs e)
-        {
-            Xml profile = new Xml("HypseusFE.xml");
-            MtbHypseusLocation.Text = profile.GetValue("HypseusFE Options", "Hypseus Location").ToString();
+        {           
+            MtbHypseusLocation.Text = clProfile.GetProfileValue("HypseusFE Options", "Hypseus Location").ToString();
         }
         private void MbuClose_Click(object sender, EventArgs e)
         {
@@ -37,9 +36,8 @@ namespace HypseusFE
             };
             if (file.ShowDialog() == DialogResult.OK)
             {
-                MtbHypseusLocation.Text = file.FileName;
-                Xml profile = new Xml("HypseusFE.xml");
-                profile.SetValue("HypseusFE Options", "Hypseus Location", MtbHypseusLocation.Text);
+                MtbHypseusLocation.Text = file.FileName;                
+                clProfile.SetProfileValue("HypseusFE Options", "Hypseus Location", MtbHypseusLocation.Text);
             }
         }
     }

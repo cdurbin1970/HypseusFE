@@ -30,11 +30,11 @@ namespace HypseusFE
         private void FrConfigure_Load(object sender, EventArgs e)
         {
             this.Text = "HypseusFE Configure - " + selectedGame;
-            Xml profile = new Xml("HypseusFE.xml");
+            
             try
             {
-                MtbFrameFileLocation.Text = profile.GetValue(selectedGame, "Frame File Location").ToString();
-                MtbROMFileLocation.Text = profile.GetValue(selectedGame, "ROM File Location").ToString();
+                MtbFrameFileLocation.Text = clProfile.GetProfileValue(selectedGame, "Frame File Location");
+                MtbROMFileLocation.Text = clProfile.GetProfileValue(selectedGame, "ROM File Location");
             }
             catch (Exception)
             {
@@ -55,9 +55,7 @@ namespace HypseusFE
             if (file.ShowDialog() == DialogResult.OK)
             {
                 MtbFrameFileLocation.Text = file.FileName;
-                Xml profile = new Xml("HypseusFE.xml");
-                profile.SetValue(selectedGame, "Frame File Location", MtbFrameFileLocation.Text);
-
+                clProfile.SetProfileValue(selectedGame, "Frame File Location", MtbFrameFileLocation.Text);
             }
         }
         private void MtbROMFileLocation_DoubleClick(object sender, EventArgs e)
@@ -69,9 +67,7 @@ namespace HypseusFE
             if (file.ShowDialog() == DialogResult.OK)
             {
                 MtbROMFileLocation.Text = file.FileName;
-                Xml profile = new Xml("HypseusFE.xml");
-                profile.SetValue(selectedGame, "ROM File Location", MtbROMFileLocation.Text);
-
+                clProfile.SetProfileValue(selectedGame, "ROM File Location", MtbROMFileLocation.Text);
             }
         }
     }

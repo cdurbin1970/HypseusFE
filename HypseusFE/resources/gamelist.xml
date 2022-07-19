@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<profile>
+	<section name="gamelist">
+		<entry name="games">Astron Belt,Bad Lands,Bega's Battle,Cliff Hanger,Cobra Command,Dragon's Lair,Dragon's Lair II,Esh's Aurunmilla,Galaxy Ranger,GP World,Interstellar,M.A.C.H. 3,Road Blaster,Space Ace,Star Blazer,Super Don Quix-ote,Thayer's Quest,Us vs Them</entry>
+		<entry name="shortname">astron,badlands,bega,cliff,cobra,lair,lair2,esh,galaxy,gpworld,interstellar,mach3,roadblaster,ace,,sdq,tq,uvt</entry>
+	</section>
+</profile>
