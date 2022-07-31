@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using AMS.Profile;
 using MaterialSkin.Controls;
@@ -30,6 +26,8 @@ namespace HypseusFE
         }
         private void FrMain_Load(object sender, EventArgs e)
         {
+            axWindowsMediaPlayer1.uiMode = "none";
+
             Xml thelist = new Xml(@"resources\gamelist.xml");
 
             string[] gameslist = thelist.GetValue("gamelist", "games").ToString().Split(',');
@@ -41,6 +39,7 @@ namespace HypseusFE
             {                
                 MlbGame.Items.Add(new MaterialListBoxItem(gameslist[i]));
             }
+            MlbGame.Items.Add(new MaterialListBoxItem(""));
 
             if (!File.Exists(@"resources\HypseusFE.xml"))
             {
@@ -61,10 +60,15 @@ namespace HypseusFE
         }
         private void MlbGame_SelectedIndexChanged(object sender, MaterialListBoxItem selectedItem)
         {           
+            if(selectedItem.Text == "")
+            {
+                return;
+            }
             selectedGame = MlbGame.SelectedItem.Text;
             try
             {
                 PbMarquee.Load(@"resources\wheel\" + clProfile.GetProfileValue(selectedGame, "Short Name") + ".png");
+                axWindowsMediaPlayer1.URL = @"resources\snap\" + clProfile.GetProfileValue(selectedGame, "Short Name") + ".mp4";
             }
             catch (Exception)
             {
@@ -72,13 +76,13 @@ namespace HypseusFE
             }
         }
         private void MlbGame_DoubleClick(object sender, EventArgs e)
-        {
+        {           
             try
             {
                 string fileName = clProfile.GetProfileValue("HypseusFE Options", "Hypseus Location");
                 string arguments = @" " + clProfile.GetProfileValue(selectedGame, "Short Name") + " vldp -fullscreen -framefile \"" + clProfile.GetProfileValue(selectedGame, "Frame File Location") + "\"";
                 string workingdir = fileName.Substring(0, fileName.LastIndexOf(@"\") + 1);
-
+                axWindowsMediaPlayer1.Ctlcontrols.stop();
                 if (clProfile.GetProfileValue("HypseusFE Options", "Debug") == "true")
                 {
                     ClLogEntry.WriteLogEntry(fileName + arguments);

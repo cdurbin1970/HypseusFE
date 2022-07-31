@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrMain));
             this.PbMarquee = new System.Windows.Forms.PictureBox();
             this.MbuOptions = new MaterialSkin.Controls.MaterialButton();
             this.MlbGame = new MaterialSkin.Controls.MaterialListBox();
             this.MbuConfigure = new MaterialSkin.Controls.MaterialButton();
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.PbMarquee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
             // PbMarquee
@@ -41,8 +44,8 @@
             this.PbMarquee.Location = new System.Drawing.Point(6, 70);
             this.PbMarquee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PbMarquee.Name = "PbMarquee";
-            this.PbMarquee.Size = new System.Drawing.Size(548, 206);
-            this.PbMarquee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PbMarquee.Size = new System.Drawing.Size(312, 158);
+            this.PbMarquee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PbMarquee.TabIndex = 1;
             this.PbMarquee.TabStop = false;
             // 
@@ -54,7 +57,7 @@
             this.MbuOptions.Depth = 0;
             this.MbuOptions.HighEmphasis = true;
             this.MbuOptions.Icon = null;
-            this.MbuOptions.Location = new System.Drawing.Point(273, 286);
+            this.MbuOptions.Location = new System.Drawing.Point(241, 454);
             this.MbuOptions.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
             this.MbuOptions.MouseState = MaterialSkin.MouseState.HOVER;
             this.MbuOptions.Name = "MbuOptions";
@@ -73,13 +76,13 @@
             this.MlbGame.BorderColor = System.Drawing.Color.LightGray;
             this.MlbGame.Depth = 0;
             this.MlbGame.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MlbGame.Location = new System.Drawing.Point(560, 70);
+            this.MlbGame.Location = new System.Drawing.Point(324, 70);
             this.MlbGame.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MlbGame.MouseState = MaterialSkin.MouseState.HOVER;
             this.MlbGame.Name = "MlbGame";
             this.MlbGame.SelectedIndex = -1;
             this.MlbGame.SelectedItem = null;
-            this.MlbGame.Size = new System.Drawing.Size(197, 248);
+            this.MlbGame.Size = new System.Drawing.Size(197, 374);
             this.MlbGame.TabIndex = 5;
             this.MlbGame.SelectedIndexChanged += new MaterialSkin.Controls.MaterialListBox.SelectedIndexChangedEventHandler(this.MlbGame_SelectedIndexChanged);
             this.MlbGame.DoubleClick += new System.EventHandler(this.MlbGame_DoubleClick);
@@ -92,7 +95,7 @@
             this.MbuConfigure.Depth = 0;
             this.MbuConfigure.HighEmphasis = true;
             this.MbuConfigure.Icon = null;
-            this.MbuConfigure.Location = new System.Drawing.Point(417, 286);
+            this.MbuConfigure.Location = new System.Drawing.Point(385, 454);
             this.MbuConfigure.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
             this.MbuConfigure.MouseState = MaterialSkin.MouseState.HOVER;
             this.MbuConfigure.Name = "MbuConfigure";
@@ -105,12 +108,22 @@
             this.MbuConfigure.UseVisualStyleBackColor = true;
             this.MbuConfigure.Click += new System.EventHandler(this.MbuConfigure_Click);
             // 
+            // axWindowsMediaPlayer1
+            // 
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(7, 236);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(311, 208);
+            this.axWindowsMediaPlayer1.TabIndex = 7;
+            // 
             // FrMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(767, 326);
+            this.ClientSize = new System.Drawing.Size(530, 495);
+            this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.MbuConfigure);
             this.Controls.Add(this.MlbGame);
             this.Controls.Add(this.MbuOptions);
@@ -126,6 +139,7 @@
             this.Text = "HypseusFE";
             this.Load += new System.EventHandler(this.FrMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PbMarquee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -135,6 +149,7 @@
         private MaterialSkin.Controls.MaterialButton MbuOptions;
         private MaterialSkin.Controls.MaterialListBox MlbGame;
         private MaterialSkin.Controls.MaterialButton MbuConfigure;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
     }
 }
 
