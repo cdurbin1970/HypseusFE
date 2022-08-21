@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Text;
 using System.Runtime.InteropServices;
 
 // ====================================================================================
@@ -59,7 +57,7 @@ namespace XCoolForm
         private bool m_bMaximized = false;
 
         private XTitleBarIconHolder m_xtbHolder = new XTitleBarIconHolder();
-        private XTitleBar m_xTitleBar = new XTitleBar();
+        public XTitleBar m_xTitleBar = new XTitleBar();
         private XStatusBar m_xsbStatusBar = new XStatusBar();
         private X3DBorderPrimitive m_x3dx = new X3DBorderPrimitive();
 
@@ -932,7 +930,7 @@ namespace XCoolForm
         /// <param name="p"> Point to check.</param>
         /// <param name="rc">Rectangle area.</param>
         /// <returns></returns>
-        private bool PointInRect(Point p, Rectangle rc)
+        protected bool PointInRect(Point p, Rectangle rc)
         { 
             if ((p.X > rc.Left && p.X < rc.Right &&
                 p.Y > rc.Top && p.Y < rc.Bottom))

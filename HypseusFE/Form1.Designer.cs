@@ -41,7 +41,7 @@
             // PbMarquee
             // 
             this.PbMarquee.BackColor = System.Drawing.Color.Black;
-            this.PbMarquee.Location = new System.Drawing.Point(8, 39);
+            this.PbMarquee.Location = new System.Drawing.Point(12, 41);
             this.PbMarquee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PbMarquee.Name = "PbMarquee";
             this.PbMarquee.Size = new System.Drawing.Size(312, 158);
@@ -55,7 +55,7 @@
             this.MbuOptions.BackColor = System.Drawing.Color.Silver;
             this.MbuOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MbuOptions.ForeColor = System.Drawing.Color.Black;
-            this.MbuOptions.Location = new System.Drawing.Point(248, 422);
+            this.MbuOptions.Location = new System.Drawing.Point(246, 420);
             this.MbuOptions.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
             this.MbuOptions.Name = "MbuOptions";
             this.MbuOptions.Size = new System.Drawing.Size(136, 32);
@@ -70,7 +70,7 @@
             this.MlbGame.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MlbGame.ForeColor = System.Drawing.Color.White;
             this.MlbGame.ItemHeight = 14;
-            this.MlbGame.Location = new System.Drawing.Point(332, 39);
+            this.MlbGame.Location = new System.Drawing.Point(330, 42);
             this.MlbGame.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MlbGame.Name = "MlbGame";
             this.MlbGame.Size = new System.Drawing.Size(197, 368);
@@ -84,7 +84,7 @@
             this.MbuConfigure.BackColor = System.Drawing.Color.Silver;
             this.MbuConfigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MbuConfigure.ForeColor = System.Drawing.Color.Black;
-            this.MbuConfigure.Location = new System.Drawing.Point(392, 422);
+            this.MbuConfigure.Location = new System.Drawing.Point(391, 420);
             this.MbuConfigure.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
             this.MbuConfigure.Name = "MbuConfigure";
             this.MbuConfigure.Size = new System.Drawing.Size(136, 32);
@@ -96,10 +96,10 @@
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(8, 203);
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(13, 206);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(311, 208);
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(311, 204);
             this.axWindowsMediaPlayer1.TabIndex = 7;
             // 
             // FrMain

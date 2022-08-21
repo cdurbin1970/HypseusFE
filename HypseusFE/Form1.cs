@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -14,6 +11,7 @@ namespace HypseusFE
     public partial class FrMain : XCoolForm.XCoolForm
     {
         private string selectedGame = String.Empty;
+        private string theme = String.Empty;
         private XmlThemeLoader xtl = new XmlThemeLoader();
         public FrMain()
         {
@@ -38,27 +36,43 @@ namespace HypseusFE
             {                
                 MlbGame.Items.Add(gameslist[i]);
             }
-            //MlbGame.Items.Add(new MaterialListBoxItem(""));
 
             if (!File.Exists(@"resources\HypseusFE.xml"))
             {
-                Xml profile = new Xml(@"resources\HypseusFE.xml");
-                profile.SetValue("HypseusFE Options", "Debug", "false");
-                profile.SetValue("HypseusFE Options", "Hypseus Location","");                
+                clProfile.SetProfileValue("HypseusFE Options", "Debug", "false");
+                clProfile.SetProfileValue("HypseusFE Options", "Hypseus Location","");
+                clProfile.SetProfileValue("HypseusFE Options", "Theme", "DarkSystemTheme.xml");
 
                 for (int i = 0; i < gameslist.Length; i++)
                 {
-                    //MlbGame.Items.Add(new MaterialListBoxItem(gameslist[i]));
-                    profile.SetValue(gameslist[i], "Short Name", shortnames[i]);
-                    profile.SetValue(gameslist[i], "Frame File Location", "");
-                    profile.SetValue(gameslist[i], "ROM File Location", "");
+                    clProfile.SetProfileValue(gameslist[i], "Short Name", shortnames[i]);
+                    clProfile.SetProfileValue(gameslist[i], "Frame File Location", "");
+                    clProfile.SetProfileValue(gameslist[i], "ROM File Location", "");
 
                 }
+                theme = "DarkSystemTheme.xml";
+            }
+            else
+            {                
+                theme = clProfile.GetProfileValue("HypseusFE Options", "Theme").ToString();
+            }
+            try
+            {
+                xtl.ApplyTheme(@"resources\themes\" + theme);
+                clApplyTheme.ApplyTheme(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
             }
         }
        
         private void MlbGame_DoubleClick(object sender, EventArgs e)
-        {           
+        {
+            if (MlbGame.SelectedItem == null || MlbGame.SelectedItem.ToString() == "")
+            {
+                return;
+            }
             try
             {
                 string fileName = clProfile.GetProfileValue("HypseusFE Options", "Hypseus Location");
@@ -94,6 +108,12 @@ namespace HypseusFE
         {
             Form options = new FrOptions();
             options.ShowDialog();
+            if(theme.ToString() != clProfile.GetProfileValue("HypseusFE Options","Theme").ToString())
+            {
+                theme = clProfile.GetProfileValue("HypseusFE Options", "Theme").ToString();
+                xtl.ApplyTheme(@"resources\themes\" + theme);
+                clApplyTheme.ApplyTheme(this);
+            }
         }
         private void MbuConfigure_Click(object sender, EventArgs e)
         {
@@ -110,7 +130,7 @@ namespace HypseusFE
 
         private void MlbGame_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (MlbGame.SelectedItem.ToString() == "")
+            if (MlbGame.SelectedItem == null || MlbGame.SelectedItem.ToString() == "" )
             {
                 return;
             }
@@ -124,6 +144,6 @@ namespace HypseusFE
             {
 
             }
-        }
+        }       
     }
 }
