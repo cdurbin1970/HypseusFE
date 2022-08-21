@@ -11,8 +11,7 @@ namespace HypseusFE
     public partial class FrMain : XCoolForm.XCoolForm
     {
         private string selectedGame = String.Empty;
-        private string theme = String.Empty;
-        private XmlThemeLoader xtl = new XmlThemeLoader();
+        
         public FrMain()
         {
             InitializeComponent();
@@ -21,6 +20,7 @@ namespace HypseusFE
         private void FrMain_Load(object sender, EventArgs e)
         {
             this.TitleBar.TitleBarCaption = "HypseusFE v" + Application.ProductVersion;
+            XmlThemeLoader xtl = new XmlThemeLoader();
             xtl.ThemeForm = this;
             
             axWindowsMediaPlayer1.uiMode = "none";
@@ -31,10 +31,9 @@ namespace HypseusFE
             string[] shortnames = thelist.GetValue("gamelist", "shortname").ToString().Split(',');
 
             MlbGame.Items.Clear();
-            
-            for(int i = 0; i < gameslist.Length; i++)
-            {                
-                MlbGame.Items.Add(gameslist[i]);
+
+            foreach (string game in gameslist) {
+                MlbGame.Items.Add(game);
             }
 
             if (!File.Exists(@"resources\HypseusFE.xml"))
@@ -49,16 +48,12 @@ namespace HypseusFE
                     clProfile.SetProfileValue(gameslist[i], "Frame File Location", "");
                     clProfile.SetProfileValue(gameslist[i], "ROM File Location", "");
 
-                }
-                theme = "DarkSystemTheme.xml";
+                }               
             }
-            else
-            {                
-                theme = clProfile.GetProfileValue("HypseusFE Options", "Theme").ToString();
-            }
+            
             try
             {
-                xtl.ApplyTheme(@"resources\themes\" + theme);
+                xtl.ApplyTheme(@"resources\themes\" + clProfile.GetProfileValue("HypseusFE Options", "Theme").ToString());
                 clApplyTheme.ApplyTheme(this);
             }
             catch (Exception ex)
@@ -82,8 +77,8 @@ namespace HypseusFE
                 if (clProfile.GetProfileValue("HypseusFE Options", "Debug") == "true")
                 {
                     ClLogEntry.WriteLogEntry(fileName + arguments);
-                }                
-
+                }          
+                
                 var proc = new Process
                 {
                     StartInfo = new ProcessStartInfo
@@ -108,12 +103,14 @@ namespace HypseusFE
         {
             Form options = new FrOptions();
             options.ShowDialog();
-            if(theme.ToString() != clProfile.GetProfileValue("HypseusFE Options","Theme").ToString())
+
+            XmlThemeLoader xtl = new XmlThemeLoader
             {
-                theme = clProfile.GetProfileValue("HypseusFE Options", "Theme").ToString();
-                xtl.ApplyTheme(@"resources\themes\" + theme);
-                clApplyTheme.ApplyTheme(this);
-            }
+                ThemeForm = this
+            };
+            xtl.ApplyTheme(@"resources\themes\" + clProfile.GetProfileValue("HypseusFE Options", "Theme").ToString());
+            clApplyTheme.ApplyTheme(this);
+            
         }
         private void MbuConfigure_Click(object sender, EventArgs e)
         {
