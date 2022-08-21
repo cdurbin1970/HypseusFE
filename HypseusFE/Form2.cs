@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using MaterialSkin.Controls;
+
 
 namespace HypseusFE
 {
-    public partial class FrConfigure : MaterialForm
+    public partial class FrConfigure : XCoolForm.XCoolForm
     {
         private string selectedGame;
 
@@ -21,8 +21,9 @@ namespace HypseusFE
 
         private void FrConfigure_Load(object sender, EventArgs e)
         {
-            this.Text = "HypseusFE Configure - " + selectedGame;
-            
+
+            this.TitleBar.TitleBarCaption = "HypseusFE Configure - " + selectedGame;
+                       
             try
             {
                 MtbFrameFileLocation.Text = clProfile.GetProfileValue(selectedGame, "Frame File Location");

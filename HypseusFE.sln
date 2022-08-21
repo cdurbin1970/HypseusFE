@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HypseusFE", "HypseusFE\HypseusFE.csproj", "{6F46ECA2-5551-44C0-B5D8-97CB5C807591}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCoolForm", "XCoolForm\XCoolForm\XCoolForm.csproj", "{3B25656A-0A6B-4B68-BF41-9D3C50387EA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6F46ECA2-5551-44C0-B5D8-97CB5C807591}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F46ECA2-5551-44C0-B5D8-97CB5C807591}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F46ECA2-5551-44C0-B5D8-97CB5C807591}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B25656A-0A6B-4B68-BF41-9D3C50387EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B25656A-0A6B-4B68-BF41-9D3C50387EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B25656A-0A6B-4B68-BF41-9D3C50387EA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B25656A-0A6B-4B68-BF41-9D3C50387EA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

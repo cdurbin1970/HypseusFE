@@ -6,26 +6,25 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using AMS.Profile;
-using MaterialSkin.Controls;
-using MaterialSkin;
 using LogEntry;
+using ThemeLoader;
 
 namespace HypseusFE
 {
-    public partial class FrMain : MaterialForm
+    public partial class FrMain : XCoolForm.XCoolForm
     {
         private string selectedGame = String.Empty;
-       
+        private XmlThemeLoader xtl = new XmlThemeLoader();
         public FrMain()
         {
             InitializeComponent();
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);            
+                       
         }
         private void FrMain_Load(object sender, EventArgs e)
         {
+            this.TitleBar.TitleBarCaption = "HypseusFE v" + Application.ProductVersion;
+            xtl.ThemeForm = this;
+            
             axWindowsMediaPlayer1.uiMode = "none";
 
             Xml thelist = new Xml(@"resources\gamelist.xml");
@@ -37,9 +36,9 @@ namespace HypseusFE
             
             for(int i = 0; i < gameslist.Length; i++)
             {                
-                MlbGame.Items.Add(new MaterialListBoxItem(gameslist[i]));
+                MlbGame.Items.Add(gameslist[i]);
             }
-            MlbGame.Items.Add(new MaterialListBoxItem(""));
+            //MlbGame.Items.Add(new MaterialListBoxItem(""));
 
             if (!File.Exists(@"resources\HypseusFE.xml"))
             {
@@ -54,27 +53,10 @@ namespace HypseusFE
                     profile.SetValue(gameslist[i], "Frame File Location", "");
                     profile.SetValue(gameslist[i], "ROM File Location", "");
 
-                }               
-
+                }
             }
         }
-        private void MlbGame_SelectedIndexChanged(object sender, MaterialListBoxItem selectedItem)
-        {           
-            if(selectedItem.Text == "")
-            {
-                return;
-            }
-            selectedGame = MlbGame.SelectedItem.Text;
-            try
-            {
-                PbMarquee.Load(@"resources\wheel\" + clProfile.GetProfileValue(selectedGame, "Short Name") + ".png");
-                axWindowsMediaPlayer1.URL = @"resources\snap\" + clProfile.GetProfileValue(selectedGame, "Short Name") + ".mp4";
-            }
-            catch (Exception)
-            {
-
-            }
-        }
+       
         private void MlbGame_DoubleClick(object sender, EventArgs e)
         {           
             try
@@ -99,14 +81,14 @@ namespace HypseusFE
                         CreateNoWindow = true,
                         WorkingDirectory = workingdir
                     }
-                };
-
+                };                
                 proc.Start();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
         private void MbuOptions_Click(object sender, EventArgs e)
         {
@@ -117,12 +99,30 @@ namespace HypseusFE
         {
             if (MlbGame.SelectedItem != null)
             {
-                Form configure = new FrConfigure(MlbGame.SelectedItem.Text);
+                Form configure = new FrConfigure(MlbGame.SelectedItem.ToString());
                 configure.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Please Select A Game Before Pressing Configure!");
+            }
+        }
+
+        private void MlbGame_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (MlbGame.SelectedItem.ToString() == "")
+            {
+                return;
+            }
+            selectedGame = MlbGame.SelectedItem.ToString();
+            try
+            {
+                PbMarquee.Load(@"resources\wheel\" + clProfile.GetProfileValue(selectedGame, "Short Name") + ".png");
+                axWindowsMediaPlayer1.URL = @"resources\snap\" + clProfile.GetProfileValue(selectedGame, "Short Name") + ".mp4";
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

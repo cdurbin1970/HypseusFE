@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using MaterialSkin.Controls;
+
 
 namespace HypseusFE
 {
-    public partial class FrOptions : MaterialForm
+    public partial class FrOptions : XCoolForm.XCoolForm
     {
         public FrOptions()
         {
@@ -12,7 +12,8 @@ namespace HypseusFE
         }
 
         private void FrOptions_Load(object sender, EventArgs e)
-        {           
+        {
+            this.TitleBar.TitleBarCaption = "HypseusFE Options";
             MtbHypseusLocation.Text = clProfile.GetProfileValue("HypseusFE Options", "Hypseus Location").ToString();
         }
         private void MbuClose_Click(object sender, EventArgs e)
