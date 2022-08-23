@@ -35,6 +35,21 @@ namespace HypseusFE
             {
                 MtbFrameFileLocation.Text = clProfile.GetProfileValue(selectedGame, "Frame File Location");
                 MtbROMFileLocation.Text = clProfile.GetProfileValue(selectedGame, "ROM File Location");
+                if (clProfile.GetProfileValue(selectedGame, "Full Screen") == "true")
+                {
+                    rbFullScreen.Checked = true;
+                    tbX.Enabled = false;
+                    tbY.Enabled = false;
+                }
+                else
+                {
+                    rbWindowed.Checked = true;
+                    tbX.Enabled = true;
+                    tbY.Enabled = true;
+                }
+                tbX.Text = clProfile.GetProfileValue(selectedGame, "Screen X");
+                tbY.Text = clProfile.GetProfileValue(selectedGame, "Screen Y");
+
             }
             catch (Exception)
             {
@@ -106,6 +121,42 @@ namespace HypseusFE
 
             // It wasn't the close button that was clicked, so run the base handler.
             base.OnMouseDown(e);
+        }
+        
+        private void rbFullScreen_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbFullScreen.Checked)
+            {
+                clProfile.SetProfileValue(selectedGame, "Full Screen", "true");
+                tbX.Enabled = false;
+                tbY.Enabled = false;
+            }
+        }
+
+        private void rbWindowed_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbWindowed.Checked)
+            {
+                clProfile.SetProfileValue(selectedGame, "Full Screen", "false");
+                tbX.Enabled = true;
+                tbY.Enabled= true;
+            }
+        }
+
+        private void tbX_Leave(object sender, EventArgs e)
+        {
+            if (rbWindowed.Checked)
+            {
+                clProfile.SetProfileValue(selectedGame, "Screen X", tbX.Text);
+            }
+        }
+
+        private void tbY_Leave(object sender, EventArgs e)
+        {
+            if(rbWindowed.Checked)
+            {
+                clProfile.SetProfileValue(selectedGame, "Screen Y", tbY.Text);
+            }
         }
     }
 }

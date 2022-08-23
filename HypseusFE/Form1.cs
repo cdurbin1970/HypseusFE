@@ -10,7 +10,7 @@ namespace HypseusFE
 {
     public partial class FrMain : XCoolForm.XCoolForm
     {
-        private string selectedGame = String.Empty;
+        //private string selectedGame = String.Empty;
         
         public FrMain()
         {
@@ -38,7 +38,7 @@ namespace HypseusFE
 
             if (!File.Exists(@"resources\HypseusFE.xml"))
             {
-                clProfile.SetProfileValue("HypseusFE Options", "Debug", "false");
+                clProfile.SetProfileValue("HypseusFE Options", "Debug", "False");
                 clProfile.SetProfileValue("HypseusFE Options", "Hypseus Location","");
                 clProfile.SetProfileValue("HypseusFE Options", "Theme", "DarkSystemTheme.xml");
 
@@ -47,7 +47,9 @@ namespace HypseusFE
                     clProfile.SetProfileValue(gameslist[i], "Short Name", shortnames[i]);
                     clProfile.SetProfileValue(gameslist[i], "Frame File Location", "");
                     clProfile.SetProfileValue(gameslist[i], "ROM File Location", "");
-
+                    clProfile.SetProfileValue(gameslist[i], "Full Screen", "False");
+                    clProfile.SetProfileValue(gameslist[i], "Screen X", "1024");
+                    clProfile.SetProfileValue(gameslist[i], "Screen Y", "768");
                 }               
             }
             
@@ -70,8 +72,23 @@ namespace HypseusFE
             }
             try
             {
+                string argument = string.Empty;
+                if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Full Screen") == "true") {
+                    argument = " -fullscreen";
+                }
+                else if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Full Screen") == "false"){
+                    argument = " -x " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Screen X") + " -y " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Screen Y");
+                }
+
+
+
+
+
+
+
+
                 string fileName = clProfile.GetProfileValue("HypseusFE Options", "Hypseus Location");
-                string arguments = @" " + clProfile.GetProfileValue(selectedGame, "Short Name") + " vldp -fullscreen -framefile \"" + clProfile.GetProfileValue(selectedGame, "Frame File Location") + "\"";
+                string arguments = @" " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Short Name") + " vldp" + argument + " -framefile \"" + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Frame File Location") + "\"";
                 string workingdir = fileName.Substring(0, fileName.LastIndexOf(@"\") + 1);
                 axWindowsMediaPlayer1.Ctlcontrols.stop();
                 if (clProfile.GetProfileValue("HypseusFE Options", "Debug") == "true")
@@ -114,15 +131,14 @@ namespace HypseusFE
         }
         private void MbuConfigure_Click(object sender, EventArgs e)
         {
-            if (MlbGame.SelectedItem != null)
-            {
-                Form configure = new FrConfigure(MlbGame.SelectedItem.ToString());
-                configure.ShowDialog();
-            }
-            else
+            if (MlbGame.SelectedItem == null || MlbGame.SelectedItem.ToString() == "")
             {
                 MessageBox.Show("Please Select A Game Before Pressing Configure!");
+                return;
             }
+            Form configure = new FrConfigure(MlbGame.SelectedItem.ToString());
+            configure.ShowDialog();
+            
         }
 
         private void MlbGame_SelectedIndexChanged(object sender, EventArgs e)
@@ -131,11 +147,11 @@ namespace HypseusFE
             {
                 return;
             }
-            selectedGame = MlbGame.SelectedItem.ToString();
+            //selectedGame = MlbGame.SelectedItem.ToString();
             try
             {
-                PbMarquee.Load(@"resources\wheel\" + clProfile.GetProfileValue(selectedGame, "Short Name") + ".png");
-                axWindowsMediaPlayer1.URL = @"resources\snap\" + clProfile.GetProfileValue(selectedGame, "Short Name") + ".mp4";
+                PbMarquee.Load(@"resources\wheel\" + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Short Name") + ".png");
+                axWindowsMediaPlayer1.URL = @"resources\snap\" + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Short Name") + ".mp4";
             }
             catch (Exception)
             {

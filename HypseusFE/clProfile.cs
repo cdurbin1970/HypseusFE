@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AMS.Profile;
 
 namespace HypseusFE
@@ -11,14 +7,27 @@ namespace HypseusFE
     {
         public static string GetProfileValue(string section, string key)
         {
-            Xml profile = new Xml(@"resources\HypseusFE.xml");
-            return profile.GetValue(section, key).ToString();
+            try
+            {
+                Xml profile = new Xml(@"resources\HypseusFE.xml");
+                return profile.GetValue(section, key).ToString();
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
         }
 
         public static void SetProfileValue(string section, string key, string value)
         {
-            Xml profile = new Xml(@"resources\HypseusFE.xml");
-            profile.SetValue(section, key, value);            
+            try
+            {
+                Xml profile = new Xml(@"resources\HypseusFE.xml");
+                profile.SetValue(section, key, value);
+            }
+            catch (Exception) {
+
+            }
         }
     }
 }
