@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.rbWindowed = new System.Windows.Forms.RadioButton();
             this.rbFullScreen = new System.Windows.Forms.RadioButton();
+            this.cbFastboot = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,11 +76,11 @@
             this.materialLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.materialLabel2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.materialLabel2.ForeColor = System.Drawing.Color.White;
-            this.materialLabel2.Location = new System.Drawing.Point(15, 72);
+            this.materialLabel2.Location = new System.Drawing.Point(58, 74);
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(103, 14);
+            this.materialLabel2.Size = new System.Drawing.Size(53, 14);
             this.materialLabel2.TabIndex = 7;
-            this.materialLabel2.Text = "ROM File Location";
+            this.materialLabel2.Text = "ROM File";
             this.materialLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MtbFrameFileLocation
@@ -114,7 +115,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.rbWindowed);
             this.groupBox1.Controls.Add(this.rbFullScreen);
-            this.groupBox1.Location = new System.Drawing.Point(18, 118);
+            this.groupBox1.Location = new System.Drawing.Point(124, 144);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(198, 93);
             this.groupBox1.TabIndex = 11;
@@ -183,11 +184,23 @@
             this.rbFullScreen.UseVisualStyleBackColor = true;
             this.rbFullScreen.CheckedChanged += new System.EventHandler(this.rbFullScreen_CheckedChanged);
             // 
+            // cbFastboot
+            // 
+            this.cbFastboot.AutoSize = true;
+            this.cbFastboot.Location = new System.Drawing.Point(124, 110);
+            this.cbFastboot.Name = "cbFastboot";
+            this.cbFastboot.Size = new System.Drawing.Size(74, 18);
+            this.cbFastboot.TabIndex = 12;
+            this.cbFastboot.Text = "Fastboot";
+            this.cbFastboot.UseVisualStyleBackColor = true;
+            this.cbFastboot.CheckedChanged += new System.EventHandler(this.cbFastboot_CheckedChanged);
+            // 
             // FrConfigure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 545);
+            this.Controls.Add(this.cbFastboot);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.MtbROMFileLocation);
             this.Controls.Add(this.MtbFrameFileLocation);
@@ -221,5 +234,6 @@
         private System.Windows.Forms.TextBox tbX;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox cbFastboot;
     }
 }

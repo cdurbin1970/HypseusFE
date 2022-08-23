@@ -45,11 +45,12 @@ namespace HypseusFE
                 for (int i = 0; i < gameslist.Length; i++)
                 {
                     clProfile.SetProfileValue(gameslist[i], "Short Name", shortnames[i]);
-                    clProfile.SetProfileValue(gameslist[i], "Frame File Location", "");
-                    clProfile.SetProfileValue(gameslist[i], "ROM File Location", "");
+                    clProfile.SetProfileValue(gameslist[i], "Frame File", "");
+                    clProfile.SetProfileValue(gameslist[i], "ROM File", "");
                     clProfile.SetProfileValue(gameslist[i], "Full Screen", "False");
                     clProfile.SetProfileValue(gameslist[i], "Screen X", "1024");
                     clProfile.SetProfileValue(gameslist[i], "Screen Y", "768");
+                    clProfile.SetProfileValue(gameslist[i], "Fastboot", "False");
                 }               
             }
             
@@ -73,25 +74,26 @@ namespace HypseusFE
             try
             {
                 string argument = string.Empty;
-                if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Full Screen") == "true") {
-                    argument = " -fullscreen";
+                if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Full Screen") == "True") {
+                    argument += " -fullscreen";
                 }
-                else if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Full Screen") == "false"){
-                    argument = " -x " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Screen X") + " -y " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Screen Y");
+                else if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Full Screen") == "False"){
+                    argument += " -x " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Screen X") + " -y " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Screen Y");
                 }
 
-
-
-
-
-
-
+                if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Fastboot") == "True")
+                {
+                    argument += " -fastboot";
+                }
+                
 
                 string fileName = clProfile.GetProfileValue("HypseusFE Options", "Hypseus Location");
-                string arguments = @" " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Short Name") + " vldp" + argument + " -framefile \"" + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Frame File Location") + "\"";
+                string arguments = @" " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "ROM File") + " vldp" + argument + " -opengl -framefile \"" + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Frame File Location") + "\"";
                 string workingdir = fileName.Substring(0, fileName.LastIndexOf(@"\") + 1);
                 axWindowsMediaPlayer1.Ctlcontrols.stop();
-                if (clProfile.GetProfileValue("HypseusFE Options", "Debug") == "true")
+                
+                
+                if (clProfile.GetProfileValue("HypseusFE Options", "Debug") == "True")
                 {
                     ClLogEntry.WriteLogEntry(fileName + arguments);
                 }          

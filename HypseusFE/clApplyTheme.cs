@@ -14,6 +14,8 @@ namespace HypseusFE
         {
             Label mylabel;
             Button mybutton;
+            CheckBox mycheckBox; 
+            GroupBox mygroup;
             
             foreach (Control con in form.Controls)
             {
@@ -28,8 +30,21 @@ namespace HypseusFE
                     mybutton = (Button)con;
                     mybutton.BackColor = form.XFormBackColor;
                     mybutton.ForeColor = form.m_xTitleBar.TitleBarCaptionColor;
+                }
+                if (con.GetType() == typeof(CheckBox))
+                {
+                    mycheckBox = (CheckBox)con;
+                    mycheckBox.BackColor = form.XFormBackColor;
+                    mycheckBox.ForeColor = form.m_xTitleBar.TitleBarCaptionColor;
+                }
+                if (con.GetType() == typeof(GroupBox))
+                {
+                    mygroup = (GroupBox)con;
+                    mygroup.BackColor = form.XFormBackColor;
+                    mygroup.ForeColor = form.m_xTitleBar.TitleBarCaptionColor;
 
                 }
+
             }
         }
     }

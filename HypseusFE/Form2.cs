@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using ThemeLoader;
 using XCoolForm;
@@ -34,8 +35,8 @@ namespace HypseusFE
             try
             {
                 MtbFrameFileLocation.Text = clProfile.GetProfileValue(selectedGame, "Frame File Location");
-                MtbROMFileLocation.Text = clProfile.GetProfileValue(selectedGame, "ROM File Location");
-                if (clProfile.GetProfileValue(selectedGame, "Full Screen") == "true")
+                MtbROMFileLocation.Text = clProfile.GetProfileValue(selectedGame, "ROM File");
+                if (clProfile.GetProfileValue(selectedGame, "Full Screen") == "True")
                 {
                     rbFullScreen.Checked = true;
                     tbX.Enabled = false;
@@ -49,7 +50,7 @@ namespace HypseusFE
                 }
                 tbX.Text = clProfile.GetProfileValue(selectedGame, "Screen X");
                 tbY.Text = clProfile.GetProfileValue(selectedGame, "Screen Y");
-
+                cbFastboot.Checked = clProfile.GetProfileValue(selectedGame, "Fastboot") == "True";
             }
             catch (Exception)
             {
@@ -93,8 +94,9 @@ namespace HypseusFE
             };
             if (file.ShowDialog() == DialogResult.OK)
             {
-                MtbROMFileLocation.Text = file.FileName;
-                clProfile.SetProfileValue(selectedGame, "ROM File Location", MtbROMFileLocation.Text);
+                DirectoryInfo dir = new DirectoryInfo(file.FileName);
+                MtbROMFileLocation.Text = Path.GetFileNameWithoutExtension(dir.Name);
+                clProfile.SetProfileValue(selectedGame, "ROM File", MtbROMFileLocation.Text);
             }
         }
 
@@ -127,7 +129,7 @@ namespace HypseusFE
         {
             if(rbFullScreen.Checked)
             {
-                clProfile.SetProfileValue(selectedGame, "Full Screen", "true");
+                clProfile.SetProfileValue(selectedGame, "Full Screen", "True");
                 tbX.Enabled = false;
                 tbY.Enabled = false;
             }
@@ -137,7 +139,7 @@ namespace HypseusFE
         {
             if(rbWindowed.Checked)
             {
-                clProfile.SetProfileValue(selectedGame, "Full Screen", "false");
+                clProfile.SetProfileValue(selectedGame, "Full Screen", "False");
                 tbX.Enabled = true;
                 tbY.Enabled= true;
             }
@@ -157,6 +159,19 @@ namespace HypseusFE
             {
                 clProfile.SetProfileValue(selectedGame, "Screen Y", tbY.Text);
             }
+        }
+
+        private void cbFastboot_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbFastboot.Checked)
+            {
+                clProfile.SetProfileValue(selectedGame, "Fastboot", "True");
+            }
+            else if (!cbFastboot.Checked)
+            {
+                clProfile.SetProfileValue(selectedGame, "Fastboot", "False");
+            }
+
         }
     }
 }
