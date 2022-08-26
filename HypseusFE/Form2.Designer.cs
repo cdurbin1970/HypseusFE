@@ -33,15 +33,16 @@
             this.materialLabel2 = new System.Windows.Forms.Label();
             this.MtbFrameFileLocation = new System.Windows.Forms.TextBox();
             this.MtbROMFileLocation = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbY = new System.Windows.Forms.TextBox();
             this.tbX = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.rbWindowed = new System.Windows.Forms.RadioButton();
-            this.rbFullScreen = new System.Windows.Forms.RadioButton();
-            this.cbFastboot = new System.Windows.Forms.CheckBox();
-            this.groupBox1.SuspendLayout();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbFastboot = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbFullscreen = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbCheats = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // MbuClose
@@ -107,36 +108,21 @@
             this.MtbROMFileLocation.TabIndex = 9;
             this.MtbROMFileLocation.DoubleClick += new System.EventHandler(this.MtbROMFileLocation_DoubleClick);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.tbY);
-            this.groupBox1.Controls.Add(this.tbX);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.rbWindowed);
-            this.groupBox1.Controls.Add(this.rbFullScreen);
-            this.groupBox1.Location = new System.Drawing.Point(124, 144);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(198, 93);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Video";
-            // 
             // tbY
             // 
             this.tbY.BackColor = System.Drawing.Color.Silver;
             this.tbY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbY.Location = new System.Drawing.Point(127, 63);
+            this.tbY.Location = new System.Drawing.Point(227, 166);
             this.tbY.Name = "tbY";
             this.tbY.Size = new System.Drawing.Size(47, 22);
             this.tbY.TabIndex = 16;
-            this.tbY.Leave += new System.EventHandler(this.tbY_Leave);
+            this.tbY.TextChanged += new System.EventHandler(this.tbY_TextChanged);
             // 
             // tbX
             // 
             this.tbX.BackColor = System.Drawing.Color.Silver;
             this.tbX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbX.Location = new System.Drawing.Point(43, 63);
+            this.tbX.Location = new System.Drawing.Point(143, 166);
             this.tbX.Name = "tbX";
             this.tbX.Size = new System.Drawing.Size(47, 22);
             this.tbX.TabIndex = 15;
@@ -145,7 +131,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(106, 66);
+            this.label2.Location = new System.Drawing.Point(206, 169);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 14);
             this.label2.TabIndex = 14;
@@ -154,54 +140,99 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 66);
+            this.label1.Location = new System.Drawing.Point(123, 169);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 14);
             this.label1.TabIndex = 13;
             this.label1.Text = "X=";
             // 
-            // rbWindowed
+            // label3
             // 
-            this.rbWindowed.AutoSize = true;
-            this.rbWindowed.Location = new System.Drawing.Point(6, 45);
-            this.rbWindowed.Name = "rbWindowed";
-            this.rbWindowed.Size = new System.Drawing.Size(84, 18);
-            this.rbWindowed.TabIndex = 12;
-            this.rbWindowed.TabStop = true;
-            this.rbWindowed.Text = "Windowed";
-            this.rbWindowed.UseVisualStyleBackColor = true;
-            this.rbWindowed.CheckedChanged += new System.EventHandler(this.rbWindowed_CheckedChanged);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(56, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 14);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Fastboot";
             // 
-            // rbFullScreen
+            // cmbFastboot
             // 
-            this.rbFullScreen.AutoSize = true;
-            this.rbFullScreen.Location = new System.Drawing.Point(7, 21);
-            this.rbFullScreen.Name = "rbFullScreen";
-            this.rbFullScreen.Size = new System.Drawing.Size(84, 18);
-            this.rbFullScreen.TabIndex = 11;
-            this.rbFullScreen.TabStop = true;
-            this.rbFullScreen.Text = "Full Screen";
-            this.rbFullScreen.UseVisualStyleBackColor = true;
-            this.rbFullScreen.CheckedChanged += new System.EventHandler(this.rbFullScreen_CheckedChanged);
+            this.cmbFastboot.BackColor = System.Drawing.Color.Silver;
+            this.cmbFastboot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbFastboot.FormattingEnabled = true;
+            this.cmbFastboot.Items.AddRange(new object[] {
+            "Enabled",
+            "Disabled"});
+            this.cmbFastboot.Location = new System.Drawing.Point(124, 107);
+            this.cmbFastboot.Name = "cmbFastboot";
+            this.cmbFastboot.Size = new System.Drawing.Size(121, 22);
+            this.cmbFastboot.TabIndex = 14;
+            this.cmbFastboot.Text = "Disabled";
+            this.cmbFastboot.SelectedIndexChanged += new System.EventHandler(this.cmbFastboot_SelectedIndexChanged);
             // 
-            // cbFastboot
+            // label4
             // 
-            this.cbFastboot.AutoSize = true;
-            this.cbFastboot.Location = new System.Drawing.Point(124, 110);
-            this.cbFastboot.Name = "cbFastboot";
-            this.cbFastboot.Size = new System.Drawing.Size(74, 18);
-            this.cbFastboot.TabIndex = 12;
-            this.cbFastboot.Text = "Fastboot";
-            this.cbFastboot.UseVisualStyleBackColor = true;
-            this.cbFastboot.CheckedChanged += new System.EventHandler(this.cbFastboot_CheckedChanged);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(51, 141);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 14);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Fullscreen";
+            // 
+            // cmbFullscreen
+            // 
+            this.cmbFullscreen.BackColor = System.Drawing.Color.Silver;
+            this.cmbFullscreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbFullscreen.FormattingEnabled = true;
+            this.cmbFullscreen.Items.AddRange(new object[] {
+            "Enabled",
+            "Disabled"});
+            this.cmbFullscreen.Location = new System.Drawing.Point(124, 138);
+            this.cmbFullscreen.Name = "cmbFullscreen";
+            this.cmbFullscreen.Size = new System.Drawing.Size(121, 22);
+            this.cmbFullscreen.TabIndex = 16;
+            this.cmbFullscreen.Text = "Disabled";
+            this.cmbFullscreen.SelectedIndexChanged += new System.EventHandler(this.cmbFullscreen_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(72, 197);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 14);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Cheat";
+            // 
+            // cmbCheats
+            // 
+            this.cmbCheats.BackColor = System.Drawing.Color.Silver;
+            this.cmbCheats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbCheats.FormattingEnabled = true;
+            this.cmbCheats.Items.AddRange(new object[] {
+            "Enabled",
+            "Disabled"});
+            this.cmbCheats.Location = new System.Drawing.Point(124, 194);
+            this.cmbCheats.Name = "cmbCheats";
+            this.cmbCheats.Size = new System.Drawing.Size(121, 22);
+            this.cmbCheats.TabIndex = 18;
+            this.cmbCheats.Text = "Disabled";
+            this.cmbCheats.SelectedIndexChanged += new System.EventHandler(this.cmbCheats_SelectedIndexChanged);
             // 
             // FrConfigure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 545);
-            this.Controls.Add(this.cbFastboot);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.cmbCheats);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.tbY);
+            this.Controls.Add(this.tbX);
+            this.Controls.Add(this.cmbFullscreen);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbFastboot);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.MtbROMFileLocation);
             this.Controls.Add(this.MtbFrameFileLocation);
             this.Controls.Add(this.materialLabel2);
@@ -214,8 +245,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HypseusFE Configure";
             this.Load += new System.EventHandler(this.FrConfigure_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,13 +256,15 @@
         private System.Windows.Forms.Label materialLabel2;
         private System.Windows.Forms.TextBox MtbFrameFileLocation;
         private System.Windows.Forms.TextBox MtbROMFileLocation;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rbWindowed;
-        private System.Windows.Forms.RadioButton rbFullScreen;
         private System.Windows.Forms.TextBox tbY;
         private System.Windows.Forms.TextBox tbX;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox cbFastboot;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbFastboot;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbFullscreen;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbCheats;
     }
 }

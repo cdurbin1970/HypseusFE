@@ -16,6 +16,7 @@ namespace HypseusFE
             Button mybutton;
             CheckBox mycheckBox; 
             GroupBox mygroup;
+            //ComboBox mycomboBox;    
             
             foreach (Control con in form.Controls)
             {
@@ -44,6 +45,13 @@ namespace HypseusFE
                     mygroup.ForeColor = form.m_xTitleBar.TitleBarCaptionColor;
 
                 }
+                /*if (con.GetType() == typeof(ComboBox))
+                {
+                    mycomboBox = (ComboBox)con;
+                    mycomboBox.BackColor = form.XFormBackColor;
+                    mycomboBox.ForeColor = form.m_xTitleBar.TitleBarCaptionColor;
+
+                }*/
 
             }
         }

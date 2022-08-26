@@ -40,6 +40,8 @@ namespace HypseusFE
             {
                 clProfile.SetProfileValue("HypseusFE Options", "Debug", "False");
                 clProfile.SetProfileValue("HypseusFE Options", "Hypseus Location","");
+                clProfile.SetProfileValue("HypseusFE Options", "Video Playback", "Enabled");
+                clProfile.SetProfileValue("HypseusFE Options", "Mute Video", "Disabled");
                 clProfile.SetProfileValue("HypseusFE Options", "Theme", "DarkSystemTheme.xml");
 
                 for (int i = 0; i < gameslist.Length; i++)
@@ -47,10 +49,11 @@ namespace HypseusFE
                     clProfile.SetProfileValue(gameslist[i], "Short Name", shortnames[i]);
                     clProfile.SetProfileValue(gameslist[i], "Frame File", "");
                     clProfile.SetProfileValue(gameslist[i], "ROM File", "");
-                    clProfile.SetProfileValue(gameslist[i], "Full Screen", "False");
+                    clProfile.SetProfileValue(gameslist[i], "Full Screen", "Disabled");
                     clProfile.SetProfileValue(gameslist[i], "Screen X", "1024");
                     clProfile.SetProfileValue(gameslist[i], "Screen Y", "768");
-                    clProfile.SetProfileValue(gameslist[i], "Fastboot", "False");
+                    clProfile.SetProfileValue(gameslist[i], "Fastboot", "Disabled");
+                    clProfile.SetProfileValue(gameslist[i], "Cheat", "Disabled");
                 }               
             }
             
@@ -74,21 +77,26 @@ namespace HypseusFE
             try
             {
                 string argument = string.Empty;
-                if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Full Screen") == "True") {
+                if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Full Screen") == "Enabled") {
                     argument += " -fullscreen";
                 }
-                else if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Full Screen") == "False"){
+                else if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Full Screen") == "Disabled"){
                     argument += " -x " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Screen X") + " -y " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Screen Y");
                 }
 
-                if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Fastboot") == "True")
+                if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Fastboot") == "Enabled")
                 {
                     argument += " -fastboot";
                 }
-                
+
+                if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Cheat") == "Enabled")
+                {
+                    argument += " -cheat";
+                }
+
 
                 string fileName = clProfile.GetProfileValue("HypseusFE Options", "Hypseus Location");
-                string arguments = @" " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "ROM File") + " vldp" + argument + " -opengl -framefile \"" + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Frame File Location") + "\"";
+                string arguments = @" " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "ROM File") + " vldp" + argument + " -scanlines -scanline_shunt 10 -framefile \"" + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Frame File Location") + "\"";
                 string workingdir = fileName.Substring(0, fileName.LastIndexOf(@"\") + 1);
                 axWindowsMediaPlayer1.Ctlcontrols.stop();
                 
@@ -153,7 +161,18 @@ namespace HypseusFE
             try
             {
                 PbMarquee.Load(@"resources\wheel\" + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Short Name") + ".png");
-                axWindowsMediaPlayer1.URL = @"resources\snap\" + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Short Name") + ".mp4";
+                if (clProfile.GetProfileValue("HypseusFE Options", "Video Playback") == "Enabled")
+                {
+                    if (clProfile.GetProfileValue("HypseusFE Options", "Mute Video") == "Enabled")
+                    {
+                        axWindowsMediaPlayer1.settings.volume = 0;
+                    }
+                    else
+                    {
+                        axWindowsMediaPlayer1.settings.volume = 50;
+                    }  
+                    axWindowsMediaPlayer1.URL = @"resources\snap\" + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Short Name") + ".mp4";
+                }
             }
             catch (Exception)
             {

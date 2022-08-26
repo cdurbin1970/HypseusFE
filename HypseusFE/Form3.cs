@@ -5,6 +5,7 @@ using XCoolForm;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Diagnostics;
 
 namespace HypseusFE
 {
@@ -43,8 +44,50 @@ namespace HypseusFE
                 }
                 
             }
+            cmbVideoPlayback.SelectedItem = clProfile.GetProfileValue("HypseusFE Options", "Video Playback");
+            cmbMuteVideo.SelectedItem = clProfile.GetProfileValue("HypseusFE Options", "Mute Video");
+
+            lblVersion.Text = ReturnHypseusVersion(MtbHypseusLocation.Text);            
+
         }
-   
+        
+        private string ReturnHypseusVersion(string path)
+        {
+            try
+            {
+                if (!File.Exists(path))
+                {
+                    return "Invalid EXE";
+                }
+                // Get Hypseus version
+                if (path != "")
+                {
+                    string workingdir = path.Substring(0, path.LastIndexOf(@"\") + 1);
+
+                    var proc = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = path,
+                            Arguments = "-v",
+                            UseShellExecute = false,
+                            RedirectStandardOutput = true,
+                            CreateNoWindow = true,
+                            WorkingDirectory = workingdir
+                        }
+                    };
+                    proc.Start();
+                    var line = proc.StandardOutput.ReadLine();
+                    return line.Substring(line.IndexOf(':') + 1, line.Length - line.IndexOf(':') - 1);
+                }
+            }
+            catch (Exception)
+            {
+                return "Unknown";
+            }
+            return "Unknown";
+        }
+
         private void MbuClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -61,6 +104,7 @@ namespace HypseusFE
                 MtbHypseusLocation.Text = file.FileName;                
                 clProfile.SetProfileValue("HypseusFE Options", "Hypseus Location", MtbHypseusLocation.Text);
             }
+            lblVersion.Text = ReturnHypseusVersion(file.FileName);
         }      
 
         private void CbTheme_SelectedIndexChanged(object sender, EventArgs e)
@@ -94,6 +138,16 @@ namespace HypseusFE
             }
             // It wasn't the close button that was clicked, so run the base handler.
             base.OnMouseDown(e);
+        }
+
+        private void cmbVideoPlayback_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clProfile.SetProfileValue("HypseusFE Options", "Video Playback", cmbVideoPlayback.Text);
+        }
+
+        private void cmbMuteVideo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clProfile.SetProfileValue("HypseusFE Options", "Mute Video", cmbMuteVideo.Text);
         }
     }
 }
