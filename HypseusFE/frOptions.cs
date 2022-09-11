@@ -21,7 +21,6 @@ namespace HypseusFE
             XmlThemeLoader xtl = new XmlThemeLoader();
             this.TitleBar.TitleBarCaption = "HypseusFE Options";
             xtl.ThemeForm = this;
-            MtbHypseusLocation.Text = clProfile.GetProfileValue("HypseusFE Options", "Hypseus Location").ToString();
             var theme = clProfile.GetProfileValue("HypseusFE Options", "Theme").ToString();
 
             try
@@ -44,8 +43,12 @@ namespace HypseusFE
                 }
                 
             }
+
+
+            MtbHypseusLocation.Text = clProfile.GetProfileValue("HypseusFE Options", "Hypseus Location").ToString();
             cmbVideoPlayback.SelectedItem = clProfile.GetProfileValue("HypseusFE Options", "Video Playback");
             cmbMuteVideo.SelectedItem = clProfile.GetProfileValue("HypseusFE Options", "Mute Video");
+            cmbShowSplash.SelectedItem = clProfile.GetProfileValue("HypseusFE Options", "Show Splash Screen");
 
             lblVersion.Text = ReturnHypseusVersion(MtbHypseusLocation.Text);            
 
@@ -115,6 +118,21 @@ namespace HypseusFE
             clProfile.SetProfileValue("HypseusFE Options", "Theme", CbTheme.SelectedItem + ".xml");
             clApplyTheme.ApplyTheme(this);
         }
+        
+        private void cmbVideoPlayback_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clProfile.SetProfileValue("HypseusFE Options", "Video Playback", cmbVideoPlayback.Text);
+        }
+
+        private void cmbMuteVideo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clProfile.SetProfileValue("HypseusFE Options", "Mute Video", cmbMuteVideo.Text);
+        }
+
+        private void cmbShowSplash_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clProfile.SetProfileValue("HypseusFE Options", "Show Splash Screen", cmbShowSplash.Text);
+        }
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
@@ -138,16 +156,6 @@ namespace HypseusFE
             }
             // It wasn't the close button that was clicked, so run the base handler.
             base.OnMouseDown(e);
-        }
-
-        private void cmbVideoPlayback_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            clProfile.SetProfileValue("HypseusFE Options", "Video Playback", cmbVideoPlayback.Text);
-        }
-
-        private void cmbMuteVideo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            clProfile.SetProfileValue("HypseusFE Options", "Mute Video", cmbMuteVideo.Text);
-        }
+        }       
     }
 }

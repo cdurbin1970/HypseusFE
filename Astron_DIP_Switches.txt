@@ -1,0 +1,34 @@
+ASTRON BELT
+Setting							BANK 0			BANK 1			
+Default							00000000		00000000		
+
+1 Coin/1 Credit					00000000 - 0	00000000
+1 Coin/2 Credits				00010001 - 17	00000000
+1 Coin/3 Credits				00100010 - 34	00000000
+1 Coin/4 Credits				00110011 - 51	00000000
+1 Coin/5 Credits				01000100 - 68	00000000
+1 Coin/6 Credits				01010101 - 85	00000000
+2 Coins/1 Credit				01100110 - 102	00000000
+3 Coins/1 Credit				01110111 - 119	00000000
+4 Coins/1 Credit				10001000 - 136	00000000
+2 Coins/3 Credits				10011001 - 153	00000000
+
+Play Timer 60					00000000		00000000 - 0
+Play Timer 50					00000000		00000010 - 2            
+Play Timer 40					00000000		00000100 - 4
+Play Timer Infinite				00000000		00000110 - 6            
+
+Difficulty Normal				00000000		00000000 - 0
+Difficulty Hard					00000000		00001000 - 8
+
+Reserve Ship Score 5k,10k,20k	00000000		00000000 - 0
+Reserve Ship Score 5k,20k,40k	00000000		00010000 - 16
+Reserve Ship Score 10k,20k,30k	00000000		00100000 - 32
+Reserve Ship Score 10k,20k,40k	00000000		00110000 - 48
+
+Game Type Continue				00000000		00000000 - 0
+Game Type Select				00000000		01000000 - 64
+
+Sound in Attract On				00000000		00000000 - 0
+Sound in Attract Off			00000000		00000001 - 1
+

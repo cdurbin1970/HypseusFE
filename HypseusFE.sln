@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCoolForm", "XCoolForm\XCoo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A8C5FDC3-B46D-4436-8260-A233715BC48F}"
 	ProjectSection(SolutionItems) = preProject
+		Bad_DIP_Switches.txt = Bad_DIP_Switches.txt
 		README.MD = README.MD
+		Astron_DIP_Switches.txt = Astron_DIP_Switches.txt
 	EndProjectSection
 EndProject
 Global

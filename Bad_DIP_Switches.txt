@@ -1,0 +1,5 @@
+BAD LANDS
+Setting							BANK 0			BANK 1			
+Default							00000000		10000001
+
+

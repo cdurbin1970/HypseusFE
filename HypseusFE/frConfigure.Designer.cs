@@ -116,7 +116,7 @@
             this.tbY.Name = "tbY";
             this.tbY.Size = new System.Drawing.Size(47, 22);
             this.tbY.TabIndex = 16;
-            this.tbY.TextChanged += new System.EventHandler(this.tbY_TextChanged);
+            this.tbY.Leave += new System.EventHandler(this.tbY_Leave);
             // 
             // tbX
             // 

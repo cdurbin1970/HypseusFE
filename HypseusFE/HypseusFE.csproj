@@ -36,6 +36,9 @@
     <Reference Include="AMS.Profile, Version=2.0.7380.20748, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ams.Profile.1.0.0\lib\net45\AMS.Profile.dll</HintPath>
     </Reference>
+    <Reference Include="AT.WinForm.ToggleSwitch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AT.WinForm.ToggleSwitch.1.0.0\lib\net48\AT.WinForm.ToggleSwitch.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -53,35 +56,164 @@
     <Compile Include="clApplyTheme.cs" />
     <Compile Include="clLogEntry.cs" />
     <Compile Include="clProfile.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="frAstronConfigure.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frAstronConfigure.Designer.cs">
+      <DependentUpon>frAstronConfigure.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="frBadLandsConfigure.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="frBadLandsConfigure.Designer.cs">
+      <DependentUpon>frBadLandsConfigure.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form3.cs">
+    <Compile Include="frBegaConfigure.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <Compile Include="frBegaConfigure.Designer.cs">
+      <DependentUpon>frBegaConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frCliffConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frCliffConfigure.Designer.cs">
+      <DependentUpon>frCliffConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frCobraConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frCobraConfigure.Designer.cs">
+      <DependentUpon>frCobraConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frDebug.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frDebug.Designer.cs">
+      <DependentUpon>frDebug.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frDragon2Configure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frDragon2Configure.Designer.cs">
+      <DependentUpon>frDragon2Configure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frDragonConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frDragonConfigure.Designer.cs">
+      <DependentUpon>frDragonConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frEshConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frEshConfigure.Designer.cs">
+      <DependentUpon>frEshConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frGalaxyConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frGalaxyConfigure.Designer.cs">
+      <DependentUpon>frGalaxyConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frGPConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frGPConfigure.Designer.cs">
+      <DependentUpon>frGPConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frInterstellarConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frInterstellarConfigure.Designer.cs">
+      <DependentUpon>frInterstellarConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frMachConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frMachConfigure.Designer.cs">
+      <DependentUpon>frMachConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frMain.Designer.cs">
+      <DependentUpon>frMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frConfigure.Designer.cs">
+      <DependentUpon>frConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frOptions.Designer.cs">
+      <DependentUpon>frOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frRoadBlasterConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frRoadBlasterConfigure.Designer.cs">
+      <DependentUpon>frRoadBlasterConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frSpaceAceConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frSpaceAceConfigure.Designer.cs">
+      <DependentUpon>frSpaceAceConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frSplash.Designer.cs">
+      <DependentUpon>frSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frStarBlazerConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frStarBlazerConfigure.Designer.cs">
+      <DependentUpon>frStarBlazerConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frSuperDonConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frSuperDonConfigure.Designer.cs">
+      <DependentUpon>frSuperDonConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frThayerConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frThayerConfigure.Designer.cs">
+      <DependentUpon>frThayerConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frUVTConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frUVTConfigure.Designer.cs">
+      <DependentUpon>frUVTConfigure.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlThemeLoader.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frAstronConfigure.resx">
+      <DependentUpon>frAstronConfigure.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="frDebug.resx">
+      <DependentUpon>frDebug.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <EmbeddedResource Include="frMain.resx">
+      <DependentUpon>frMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frConfigure.resx">
+      <DependentUpon>frConfigure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frOptions.resx">
+      <DependentUpon>frOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frSplash.resx">
+      <DependentUpon>frSplash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -39,6 +39,8 @@
             this.cmbMuteVideo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.cmbShowSplash = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -86,7 +88,7 @@
             this.label1.BackColor = System.Drawing.Color.Silver;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(66, 171);
+            this.label1.Location = new System.Drawing.Point(66, 217);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 14);
             this.label1.TabIndex = 7;
@@ -97,7 +99,7 @@
             this.CbTheme.BackColor = System.Drawing.Color.Silver;
             this.CbTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CbTheme.FormattingEnabled = true;
-            this.CbTheme.Location = new System.Drawing.Point(118, 168);
+            this.CbTheme.Location = new System.Drawing.Point(118, 214);
             this.CbTheme.Name = "CbTheme";
             this.CbTheme.Size = new System.Drawing.Size(156, 21);
             this.CbTheme.TabIndex = 8;
@@ -106,7 +108,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 99);
+            this.label2.Location = new System.Drawing.Point(31, 125);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 9;
@@ -115,7 +117,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 126);
+            this.label3.Location = new System.Drawing.Point(51, 152);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 10;
@@ -129,7 +131,7 @@
             this.cmbVideoPlayback.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cmbVideoPlayback.Location = new System.Drawing.Point(118, 96);
+            this.cmbVideoPlayback.Location = new System.Drawing.Point(118, 122);
             this.cmbVideoPlayback.Name = "cmbVideoPlayback";
             this.cmbVideoPlayback.Size = new System.Drawing.Size(121, 21);
             this.cmbVideoPlayback.TabIndex = 11;
@@ -144,7 +146,7 @@
             this.cmbMuteVideo.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cmbMuteVideo.Location = new System.Drawing.Point(118, 123);
+            this.cmbMuteVideo.Location = new System.Drawing.Point(118, 149);
             this.cmbMuteVideo.Name = "cmbMuteVideo";
             this.cmbMuteVideo.Size = new System.Drawing.Size(121, 21);
             this.cmbMuteVideo.TabIndex = 12;
@@ -168,11 +170,37 @@
             this.lblVersion.Size = new System.Drawing.Size(0, 13);
             this.lblVersion.TabIndex = 14;
             // 
+            // cmbShowSplash
+            // 
+            this.cmbShowSplash.BackColor = System.Drawing.Color.Silver;
+            this.cmbShowSplash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbShowSplash.FormattingEnabled = true;
+            this.cmbShowSplash.Items.AddRange(new object[] {
+            "Enabled",
+            "Disabled"});
+            this.cmbShowSplash.Location = new System.Drawing.Point(118, 176);
+            this.cmbShowSplash.Name = "cmbShowSplash";
+            this.cmbShowSplash.Size = new System.Drawing.Size(121, 21);
+            this.cmbShowSplash.TabIndex = 16;
+            this.cmbShowSplash.Text = "Disabled";
+            this.cmbShowSplash.SelectedIndexChanged += new System.EventHandler(this.cmbShowSplash_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(43, 179);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Show Splash";
+            // 
             // FrOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(480, 390);
+            this.Controls.Add(this.cmbShowSplash);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbMuteVideo);
@@ -208,5 +236,7 @@
         private System.Windows.Forms.ComboBox cmbMuteVideo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.ComboBox cmbShowSplash;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -34,10 +34,10 @@ namespace HypseusFE
 
             try
             {
-                MtbFrameFileLocation.Text = clProfile.GetProfileValue(selectedGame, "Frame File Location");
+                MtbFrameFileLocation.Text = clProfile.GetProfileValue(selectedGame, "Frame File");
                 MtbROMFileLocation.Text = clProfile.GetProfileValue(selectedGame, "ROM File");
                 cmbFullscreen.SelectedItem = clProfile.GetProfileValue(selectedGame, "Full Screen");
-                if (cmbFullscreen.Text == "Enabled")
+                /*if (cmbFullscreen.Text == "Enabled")
                 {                    
                     tbX.Enabled = false;
                     tbY.Enabled = false;
@@ -46,7 +46,7 @@ namespace HypseusFE
                 {                 
                     tbX.Enabled = true;
                     tbY.Enabled = true;
-                }
+                }*/
                 tbX.Text = clProfile.GetProfileValue(selectedGame, "Screen X");
                 tbY.Text = clProfile.GetProfileValue(selectedGame, "Screen Y");
 
@@ -84,7 +84,7 @@ namespace HypseusFE
             if (file.ShowDialog() == DialogResult.OK)
             {
                 MtbFrameFileLocation.Text = file.FileName;
-                clProfile.SetProfileValue(selectedGame, "Frame File Location", MtbFrameFileLocation.Text);
+                clProfile.SetProfileValue(selectedGame, "Frame File", MtbFrameFileLocation.Text);
             }
         }
 
@@ -109,7 +109,7 @@ namespace HypseusFE
 
         private void cmbFullscreen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbFullscreen.Text == "Disabled")
+           /* if (cmbFullscreen.Text == "Disabled")
             {
                 tbX.Enabled = true;
                 tbY.Enabled = true;
@@ -118,7 +118,7 @@ namespace HypseusFE
             {
                 tbX.Enabled = false;
                 tbY.Enabled = false;
-            }
+            }*/
             clProfile.SetProfileValue(selectedGame, "Full Screen", cmbFullscreen.Text);
         }       
 
@@ -127,9 +127,14 @@ namespace HypseusFE
             clProfile.SetProfileValue(selectedGame, "Screen X", tbX.Text);
         }
 
-        private void tbY_TextChanged(object sender, EventArgs e)
+        private void tbY_Leave(object sender, EventArgs e)
         {
             clProfile.SetProfileValue(selectedGame, "Screen Y", tbY.Text);
+        }
+
+        private void cmbCheats_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clProfile.SetProfileValue(selectedGame, "Cheat", cmbCheats.Text);
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -155,11 +160,6 @@ namespace HypseusFE
 
             // It wasn't the close button that was clicked, so run the base handler.
             base.OnMouseDown(e);
-        }
-
-        private void cmbCheats_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            clProfile.SetProfileValue(selectedGame, "Cheat", cmbCheats.Text);
-        }
+        }            
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using AMS.Profile;
+using LogEntry;
 
 namespace HypseusFE
 {
@@ -14,6 +15,7 @@ namespace HypseusFE
             }
             catch (Exception)
             {
+                ClLogEntry.WriteLogEntry("Unable to read Section: " + section + " Key: " + key);
                 return string.Empty;
             }
         }
@@ -26,8 +28,8 @@ namespace HypseusFE
                 profile.SetValue(section, key, value);
             }
             catch (Exception) {
-
-            }
+                ClLogEntry.WriteLogEntry("Unable to write Section: " + section + " Key: " + key + " Value: " + value);
+            }           
         }
     }
 }
