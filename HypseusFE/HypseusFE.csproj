@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clApplyTheme.cs" />
+    <Compile Include="clBitCheck.cs" />
     <Compile Include="clLogEntry.cs" />
     <Compile Include="clProfile.cs" />
     <Compile Include="frAstronConfigure.cs">

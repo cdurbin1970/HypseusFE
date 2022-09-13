@@ -59,6 +59,8 @@ namespace HypseusFE
                     clProfile.SetProfileValue(gameslist[i], "Fastboot", "Disabled");
                     clProfile.SetProfileValue(gameslist[i], "Cheat", "Disabled");
                     clProfile.SetProfileValue(gameslist[i], "Extra", "");
+                    clProfile.SetProfileValue(gameslist[i], "Sound", "Emulated Sounds");
+                    clProfile.SetProfileValue(gameslist[i], "Sound Samples", "2048");
 
                 }               
             }
@@ -115,6 +117,21 @@ namespace HypseusFE
                 if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Cheat") == "Enabled")
                 {
                     argument += " -cheat";
+                }
+
+                //Set sound parameters
+                argument += " -sound_buffer " + clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Sound Samples");
+                if(clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Sound") == "Sampled Sounds")
+                {
+                    argument += " -prefer_samples";
+                }
+                else if(clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Sound") == "Disabled") {
+                    argument += " -nosound";
+                }
+
+                if (clProfile.GetProfileValue(MlbGame.SelectedItem.ToString(), "Fastboot") == "Enabled")
+                {
+                    argument += " -fastboot";
                 }
 
                 //Set the DIP switches
